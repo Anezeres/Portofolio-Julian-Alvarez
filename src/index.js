@@ -12,7 +12,7 @@ root.render(
 
     <>
         <Info name="Julian Alvarez" biography="3D Dev" />
-        <Canvas camera={{position: [2,0,5]}}>
+        <Canvas camera={{position: [2,0,1] }}>
             <Experience/>
         </Canvas>
     </>

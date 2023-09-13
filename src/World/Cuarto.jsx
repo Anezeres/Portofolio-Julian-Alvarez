@@ -1,10 +1,22 @@
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useHelper } from "@react-three/drei";
+import { useRef } from "react";
+import { BoxHelper } from "three";
 
 
 const Cuarto = (props) => {
     const { nodes, materials } = useGLTF("/assets/Models/Cuarto/Cuarto2.glb");
+
+    const bedRef = useRef();
+    const computerRef = useRef();
+
+    useHelper(bedRef, BoxHelper);
+    useHelper(computerRef, BoxHelper);
+
   return (
     <group {...props} dispose={null}>
+
+      {/* Este es el suelo */}
+
       <mesh
         castShadow
         receiveShadow
@@ -12,51 +24,63 @@ const Cuarto = (props) => {
         material={materials.White}
         scale={[4, 0.2, 4]}
       />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Bed_frame.geometry}
-        material={materials.Frame}
-        position={[-2.66, 0.203, 2.206]}
-      />
-      <group position={[-2.66, 0.875, 2.206]}>
-        <mesh
+
+
+      {/* Esta es la cama */} 
+
+      <group ref={bedRef} position={[0, 0, 0]}>
+
+        <mesh 
           castShadow
           receiveShadow
-          geometry={nodes.Cube011.geometry}
-          material={materials.White}
+          geometry={nodes.Bed_frame.geometry}
+          material={materials.Frame}
+          position={[-2.66, 0.203, 2.206]}
         />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube011_1.geometry}
-          material={materials.Pillow}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube011_2.geometry}
-          material={materials.Blanket}
-        />
+        <group position={[-2.66, 0.875, 2.206]} >
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube011.geometry}
+            material={materials.White}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube011_1.geometry}
+            material={materials.Pillow}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube011_2.geometry}
+            material={materials.Blanket}
+          />
+        </group>
+        <group position={[-2.66, 1.337, 3.599]} >
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube012.geometry}
+            material={materials.Blanket}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube012_1.geometry}
+            material={materials.Pillow}
+          />
+        </group>
+
       </group>
-      <group position={[-2.66, 1.337, 3.599]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube012.geometry}
-          material={materials.Blanket}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube012_1.geometry}
-          material={materials.Pillow}
-        />
-      </group>
+
+      
+
+      {/* Hasta acá es la cama */}
 
       {/* Mesa Baja */}
       
-      <group position={[-0.007, 0.204, 3.486]}>
+      <group position={[-0.007, 0.204, 3.486]} >
         <mesh
           castShadow
           receiveShadow
@@ -76,7 +100,7 @@ const Cuarto = (props) => {
           material={materials["Pin picture.001"]}
         />
       </group>
-      <mesh
+      <mesh 
         castShadow
         receiveShadow
         geometry={nodes.Pillow001.geometry}
@@ -110,21 +134,52 @@ const Cuarto = (props) => {
       </group>
 
         {/* Mesa Computador */}
-
-      <group position={[-3.23, 0.198, -1.541]}>
+      <group >
+        <group position={[-3.23, 0.198, -1.541]} >
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube017.geometry}
+            material={materials.Frame}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube017_1.geometry}
+            material={materials["Pin picture.001"]}
+          />
+        </group>
+        <group position={[-1.738, 1.057, -1.254]}>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Cube017.geometry}
+          geometry={nodes.Cube052.geometry}
+          material={materials.Blanket}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube052_1.geometry}
           material={materials.Frame}
         />
+      </group>
+      <group position={[1.687, 0.667, -0.803]} >
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Cube017_1.geometry}
-          material={materials["Pin picture.001"]}
+          geometry={nodes.Cylinder005.geometry}
+          material={materials.White}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder005_1.geometry}
+          material={materials.Coffe}
         />
       </group>
+
+      </group>
+      
 
       {/* Libros */}
 
@@ -298,34 +353,7 @@ const Cuarto = (props) => {
 
     {/* Silla Computador */}
       
-      <group position={[-1.738, 1.057, -1.254]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube052.geometry}
-          material={materials.Blanket}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube052_1.geometry}
-          material={materials.Frame}
-        />
-      </group>
-      <group position={[1.687, 0.667, -0.803]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder005.geometry}
-          material={materials.White}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder005_1.geometry}
-          material={materials.Coffe}
-        />
-      </group>
+      
 
         {/* Decoración Mesa */}
 

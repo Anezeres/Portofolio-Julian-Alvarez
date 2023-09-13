@@ -7,7 +7,7 @@ const Guitar = () => {
     console.log(guitarModel)
 
     return(
-        <mesh position-y={-1} scale={0.05} rotation-y={-Math.PI * 1.5}>
+        <mesh position={[0,-1,-1.5]} scale={0.05} rotation-y={-Math.PI * 1.5}>
             <primitive object={guitarModel.scene}/>
         </mesh>
     );

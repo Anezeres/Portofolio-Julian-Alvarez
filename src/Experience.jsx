@@ -7,6 +7,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader';
 
 import Cuarto from "./World/Cuarto";
 import Guitar from "./World/Guitar";
+import Enviroment from "./World/Enviroment";
 
 const Experience = () => {
 
@@ -17,7 +18,7 @@ const Experience = () => {
             <directionalLight position={[10,10, 5]} intensity={2}/>
             
             <Cuarto scale={0.6} rotation-y={-Math.PI * 0.60} position-y={-2}/>
-            <Guitar/>
+            <Guitar />
             
         </>
     )
