@@ -8,6 +8,8 @@ const Lights = () => {
 
     const spotLightRedRef = useRef();
     const spotLightBlueRef = useRef();
+    const spotLightRedRef1 = useRef();
+    const spotLightBlueRef1 = useRef();
     const pointLightRef = useRef();
 
     //useHelper(spotLightRedRef, SpotLightHelper)
@@ -24,6 +26,8 @@ const Lights = () => {
 
         spotLightRedRef.current.position.z = newY;
         spotLightBlueRef.current.position.z = -newY;
+        spotLightRedRef1.current.position.x = newY;
+        spotLightBlueRef1.current.position.x = -newY;
     })
 
     useFrame((state, delta) => {
@@ -69,6 +73,25 @@ const Lights = () => {
                 penumbra={1}
                 distance={15}
             /> 
+
+            <spotLight
+                ref={spotLightRedRef1}
+                position={[-3, 4, 0]}
+                angle={Math.PI / 15}
+                intensity={300}
+                color={"red"}
+                penumbra={1}
+                distance={15}
+            />  
+            <spotLight
+                ref={spotLightBlueRef1}
+                position={[-3, 4, 0]}
+                angle={Math.PI / 15}
+                intensity={300}
+                color={"blue"}
+                penumbra={1}
+                distance={15}
+            />
             <pointLight 
                 ref={pointLightRef} 
                 position={[2.2, 0.5, -1.8]} 

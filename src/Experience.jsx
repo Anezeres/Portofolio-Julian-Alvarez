@@ -11,6 +11,7 @@ import Enviroment from "./World/Enviroment";
 import Boy from "./World/Boy";
 import Lights from "./World/Lights";
 import Parlante from "./World/Parlante";
+import Mixer from "./World/Mixer";
 
 const Experience = () => {
 
@@ -23,6 +24,7 @@ const Experience = () => {
             <Cuarto scale={0.6} rotation-y={-Math.PI * 0.60} position-y={-2}/>
             <Guitar />
             <Parlante/>
+            <Mixer/>
             
         </>
     )
