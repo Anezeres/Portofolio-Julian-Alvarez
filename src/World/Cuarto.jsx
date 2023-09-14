@@ -4,13 +4,13 @@ import { BoxHelper } from "three";
 
 
 const Cuarto = (props) => {
-    const { nodes, materials } = useGLTF("/assets/Models/Cuarto/Cuarto2.glb");
+  const { nodes, materials } = useGLTF("/assets/Models/Cuarto/Cuarto2.glb");
 
-    const bedRef = useRef();
-    const computerRef = useRef();
+  const bedRef = useRef();
+  const computerRef = useRef();
 
-    useHelper(bedRef, BoxHelper);
-    useHelper(computerRef, BoxHelper);
+  useHelper(bedRef, BoxHelper);
+  useHelper(computerRef, BoxHelper);
 
   return (
     <group {...props} dispose={null}>
@@ -26,7 +26,7 @@ const Cuarto = (props) => {
       />
 
 
-      {/* Esta es la cama */} 
+      {/* Esta es la cama */}
 
       <group ref={bedRef} position={[0, 0, 0]}>
 
@@ -74,12 +74,12 @@ const Cuarto = (props) => {
 
       </group>
 
-      
+
 
       {/* Hasta acá es la cama */}
 
       {/* Mesa Baja */}
-      
+
       <group position={[-0.007, 0.204, 3.486]} >
         <mesh
           castShadow
@@ -100,7 +100,7 @@ const Cuarto = (props) => {
           material={materials["Pin picture.001"]}
         />
       </group>
-      <mesh 
+      <mesh
         castShadow
         receiveShadow
         geometry={nodes.Pillow001.geometry}
@@ -116,7 +116,7 @@ const Cuarto = (props) => {
         rotation={[-1.18, 0.143, 0.13]}
       />
 
-        {/* Libreria */}
+      {/* Libreria */}
 
       <group position={[2.63, 0.204, 3.657]}>
         <mesh
@@ -132,56 +132,6 @@ const Cuarto = (props) => {
           material={materials["Pin picture.001"]}
         />
       </group>
-
-        {/* Mesa Computador */}
-      <group >
-        <group position={[-3.23, 0.198, -1.541]} >
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cube017.geometry}
-            material={materials.Frame}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cube017_1.geometry}
-            material={materials["Pin picture.001"]}
-          />
-        </group>
-        <group position={[-1.738, 1.057, -1.254]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube052.geometry}
-          material={materials.Blanket}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube052_1.geometry}
-          material={materials.Frame}
-        />
-      </group>
-      <group position={[1.687, 0.667, -0.803]} >
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder005.geometry}
-          material={materials.White}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder005_1.geometry}
-          material={materials.Coffe}
-        />
-      </group>
-
-      </group>
-      
-
-      {/* Libros */}
 
       <group position={[3.378, 1.88, 3.675]}>
         <mesh
@@ -210,8 +160,6 @@ const Cuarto = (props) => {
         />
       </group>
 
-        {/* Mas Libros */}
-      
       <group position={[2.587, 2.612, 3.682]}>
         <mesh
           castShadow
@@ -238,41 +186,7 @@ const Cuarto = (props) => {
           material={materials.Blue}
         />
       </group>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Coffe_table.geometry}
-        material={materials.Frame}
-        position={[1.197, 0.554, -0.881]}
-      />
 
-        {/* Parte de la mesita */}
-
-      <group position={[1.186, 0.208, -0.871]} rotation={[0, 0.455, 0]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Plane.geometry}
-          material={materials.Pillow}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Plane_1.geometry}
-          material={materials.White}
-        />
-      </group>
-
-        {/* Almohada */}
-
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cushion.geometry}
-        material={materials.Blanket}
-        position={[2.772, 0.282, -0.848]}
-        rotation={[0, 0.349, 0]}
-      />
       <group position={[3.394, 1.271, 3.672]}>
         <mesh
           castShadow
@@ -299,30 +213,6 @@ const Cuarto = (props) => {
           material={materials.Yellow}
         />
       </group>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cushion001.geometry}
-        material={materials.Blanket}
-        position={[1.416, 0.282, -2.391]}
-        rotation={[-Math.PI, 1.403, -Math.PI]}
-      />
-      <group position={[-3.568, 0.174, -3.313]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube035.geometry}
-          material={materials.Blanket}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube035_1.geometry}
-          material={materials.Pillow}
-        />
-      </group>
-
-        {/* Mas Libros */}
 
       <group position={[2.496, 1.877, 3.672]}>
         <mesh
@@ -351,30 +241,6 @@ const Cuarto = (props) => {
         />
       </group>
 
-    {/* Silla Computador */}
-      
-      
-
-        {/* Decoración Mesa */}
-
-      <group position={[1.306, 0.684, -1.454]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder006.geometry}
-          material={materials.White}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cylinder006_1.geometry}
-          material={materials.Coffe}
-        />
-      </group>
-
-
-
-      
       <group position={[2.568, 1.491, 3.646]} rotation={[0, 0.315, 0]}>
         <mesh
           castShadow
@@ -415,39 +281,171 @@ const Cuarto = (props) => {
           material={materials["Pin picture"]}
         />
       </group>
-      <group position={[-3.654, 1.444, -1.056]}>
+
+
+      {/* Fin libreria */}
+
+      {/* Mesa Computador */}
+      <group >
+        <group position={[-3.23, 0.198, -1.541]} >
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube017.geometry}
+            material={materials.Frame}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube017_1.geometry}
+            material={materials["Pin picture.001"]}
+          />
+        </group>
+        <group position={[-1.738, 1.057, -1.254]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube052.geometry}
+            material={materials.Blanket}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube052_1.geometry}
+            material={materials.Frame}
+          />
+        </group>
+        <group position={[-3.568, 0.174, -3.313]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube035.geometry}
+            material={materials.Blanket}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube035_1.geometry}
+            material={materials.Pillow}
+          />
+        </group>
+
+        <group position={[-3.654, 1.444, -1.056]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube021.geometry}
+            material={materials.Pillow}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube021_1.geometry}
+            material={materials["Pin picture.001"]}
+          />
+        </group>
+
+        <group position={[-2.953, 1.441, -1.105]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube023.geometry}
+            material={materials.Pillow}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube023_1.geometry}
+            material={materials["Pin picture.001"]}
+          />
+        </group>
+      </group>
+
+      {/* Fin Mesa computador */}
+
+
+      {/* Parte de la mesita */}
+
+      <group position={[1.186, 0.208, -0.871]} rotation={[0, 0.455, 0]}>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Cube021.geometry}
+          geometry={nodes.Plane.geometry}
           material={materials.Pillow}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Cube021_1.geometry}
-          material={materials["Pin picture.001"]}
+          geometry={nodes.Plane_1.geometry}
+          material={materials.White}
         />
       </group>
 
-        {/* Computador */}
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Coffe_table.geometry}
+        material={materials.Frame}
+        position={[1.197, 0.554, -0.881]}
+      /> 
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cushion.geometry}
+        material={materials.Blanket}
+        position={[2.772, 0.282, -0.848]}
+        rotation={[0, 0.349, 0]}
+      />
 
-      <group position={[-2.953, 1.441, -1.105]}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cushion001.geometry}
+        material={materials.Blanket}
+        position={[1.416, 0.282, -2.391]}
+        rotation={[-Math.PI, 1.403, -Math.PI]}
+      />
+
+      <group position={[1.306, 0.684, -1.454]}>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Cube023.geometry}
-          material={materials.Pillow}
+          geometry={nodes.Cylinder006.geometry}
+          material={materials.White}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Cube023_1.geometry}
-          material={materials["Pin picture.001"]}
+          geometry={nodes.Cylinder006_1.geometry}
+          material={materials.Coffe}
         />
       </group>
 
-    {/* Maseta */}
+      <group position={[1.687, 0.667, -0.803]} >
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cylinder005.geometry}
+            material={materials.White}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cylinder005_1.geometry}
+            material={materials.Coffe}
+          />
+        </group>
+      
+
+
+
+      {/* Fin Mesita */}
+
+
+
+
+
+      {/* Paredes*/}
 
       <group position={[-3.659, 1.445, -2.442]}>
         <mesh
@@ -482,8 +480,8 @@ const Cuarto = (props) => {
         material={materials.White}
       />
 
-        {/* Ventana */}
-      
+      {/* Ventana */}
+
       <group position={[0.038, 2.932, 4.276]}>
         <mesh
           castShadow
@@ -499,7 +497,7 @@ const Cuarto = (props) => {
         />
       </group>
 
-        {/* Donde se ponen la notas */}
+      {/* Donde se ponen la notas */}
 
       <group position={[-4.004, 3.051, -1.324]}>
         <mesh
@@ -558,7 +556,7 @@ const Cuarto = (props) => {
         />
       </group>
 
-        {/* Mueble Pared */}
+      {/* Mueble Pared */}
 
       <mesh
         castShadow
@@ -568,8 +566,8 @@ const Cuarto = (props) => {
         position={[-3.77, 3.25, 2.269]}
       />
 
-    {/* Maseticas del Mueble */}
-      
+      {/* Maseticas del Mueble */}
+
       <group position={[-3.717, 3.193, 2.867]}>
         <mesh
           castShadow
@@ -585,8 +583,8 @@ const Cuarto = (props) => {
         />
       </group>
 
-    {/* Segunda Maseta */}
-      
+      {/* Segunda Maseta */}
+
       <group position={[-3.74, 2.79, 1.657]}>
         <mesh
           castShadow
