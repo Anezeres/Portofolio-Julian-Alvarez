@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Stars } from "@react-three/drei";
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useLoader } from "@react-three/fiber";
@@ -12,12 +12,19 @@ import Boy from "./World/Boy";
 import Lights from "./World/Lights";
 import Parlante from "./World/Parlante";
 import Mixer from "./World/Mixer";
+import Details from "./World/Details";
+import { Perf } from "r3f-perf";
+import Palmera from "./World/Palmera";
 
 const Experience = () => {
 
 
     return (
         <>
+
+            <Perf position={"top-right"} />
+
+            <Details/>
             <OrbitControls makeDefault/>
             <Lights/>
             <Boy/>
@@ -25,6 +32,7 @@ const Experience = () => {
             <Guitar />
             <Parlante/>
             <Mixer/>
+            <Palmera/>
             
         </>
     )

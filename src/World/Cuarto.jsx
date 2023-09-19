@@ -489,12 +489,6 @@ const Cuarto = (props) => {
           geometry={nodes.Cube004.geometry}
           material={materials.Frame}
         />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube004_1.geometry}
-          material={materials.Material}
-        />
       </group>
 
       {/* Donde se ponen la notas */}

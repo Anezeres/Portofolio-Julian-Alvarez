@@ -1,6 +1,7 @@
 import { useHelper } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
+import { Color } from 'three';
 import { DirectionalLightHelper, PointLightHelper, SpotLightHelper } from "three";
 
 const Lights = () => {
@@ -12,8 +13,6 @@ const Lights = () => {
     const spotLightBlueRef1 = useRef();
     const pointLightRef = useRef();
 
-    //useHelper(spotLightRedRef, SpotLightHelper)
-    //useHelper(spotLightBlueRef, SpotLightHelper)
     useHelper(pointLightRef, PointLightHelper)
 
 
@@ -32,22 +31,19 @@ const Lights = () => {
 
     useFrame((state, delta) => {
         const amplitude = 2.5; 
-        const frequency = 2; 
-
+        const frequency = 5; 
+        const rojo = new Color(0xff0000);
+        const azul = new Color(0x0000ff);
 
         const newY = amplitude * Math.sin(state.clock.elapsedTime * frequency);
 
 
-        if(newY == 0){
-            console.log("Hola")
-            pointLightRef.current.color = "0xFF0000";
-        }else if(newY == 1){
-            pointLightRef.current.color ="0x0000FF";
+        if(newY > 0){
+            pointLightRef.current.color = rojo;
+        }else if(newY < 1){
+            pointLightRef.current.color = azul;
         }
-        //pointLightRef.current.position.y =0.5 + newY;
-
-
-        
+        //pointLightRef.current.position.y =0.5 + newY; 
     })
 
 

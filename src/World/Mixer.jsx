@@ -10,7 +10,7 @@ const Mixer = () => {
     console.log(mixerRef)
 
     useFrame((state, delta) => {
-        const amplitude = 0.04; 
+        const amplitude = 0.01; 
         const frequency = 8; 
 
 
