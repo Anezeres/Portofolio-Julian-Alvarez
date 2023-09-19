@@ -1,0 +1,11 @@
+Model Information:
+* title:	DP HW telescope
+* source:	https://sketchfab.com/3d-models/dp-hw-telescope-63f7addbfc84470cb0376f4d199eb6e3
+* author:	aleksankas (https://sketchfab.com/aleksankas)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "DP HW telescope" (https://sketchfab.com/3d-models/dp-hw-telescope-63f7addbfc84470cb0376f4d199eb6e3) by aleksankas (https://sketchfab.com/aleksankas) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

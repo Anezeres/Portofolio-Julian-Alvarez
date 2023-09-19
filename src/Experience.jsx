@@ -15,6 +15,7 @@ import Mixer from "./World/Mixer";
 import Details from "./World/Details";
 import { Perf } from "r3f-perf";
 import Palmera from "./World/Palmera";
+import Telescope from "./World/Telescope";
 
 const Experience = () => {
 
@@ -33,6 +34,7 @@ const Experience = () => {
             <Parlante/>
             <Mixer/>
             <Palmera/>
+            <Telescope/>
             
         </>
     )
