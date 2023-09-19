@@ -12,7 +12,7 @@ const Lights = () => {
     const spotLightRedRef1 = useRef();
     const pointLightRef = useRef();
 
-    useHelper(pointLightRef, PointLightHelper)
+    //useHelper(pointLightRef, PointLightHelper)
 
 
     useFrame((state, delta) => {
