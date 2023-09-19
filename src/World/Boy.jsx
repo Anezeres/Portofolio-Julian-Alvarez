@@ -4,23 +4,16 @@ import { useTexture } from "@react-three/drei";
 
 const Boy = () => {
 
-    const PATH = "/assets/Textures/Boy/";
     const boyRef = useRef();
-    const boyModel = useGLTF("/assets/Models/Boy/scene.gltf");
+    const boyModel = useGLTF("/assets/Models/Boy/Boy.glb");
     const { animations} = boyModel;
 
     const {actions} = useAnimations(animations,boyRef);
 
     console.log(boyRef)
 
-   /*  const propsTexture = useTexture({
-        normalMap: PATH + "boyNormal.png",
-        map: PATH + "boyColor.jpeg"
-    }) */
-
-
     useEffect(() => {
-        const action = actions["mixamo.com"];
+        const action = actions["Armature|mixamo.com|Layer0"];
         action.play();
     })
 
@@ -30,7 +23,7 @@ const Boy = () => {
             <mesh 
                 ref={boyRef}
                 position={[-1,-1.85,0]}
-                scale={0.4} 
+                scale={0.8} 
                 rotation-y={Math.PI * 2.5}>
                 <primitive object={boyModel.scene}/>
                 {/* <meshStandardMaterial /> */}
@@ -41,4 +34,4 @@ const Boy = () => {
 }
 
 export default Boy;
-useGLTF.preload("/assets/Models/Boy/scene.gltf")
+useGLTF.preload("/assets/Models/Boy/Boy.glb")
