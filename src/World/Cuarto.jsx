@@ -9,8 +9,8 @@ const Cuarto = (props) => {
   const bedRef = useRef();
   const computerRef = useRef();
 
-  useHelper(bedRef, BoxHelper);
-  useHelper(computerRef, BoxHelper);
+  //useHelper(bedRef, BoxHelper);
+  //useHelper(computerRef, BoxHelper);
 
   return (
     <group {...props} dispose={null}>
@@ -488,12 +488,6 @@ const Cuarto = (props) => {
           receiveShadow
           geometry={nodes.Cube004.geometry}
           material={materials.Frame}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cube004_1.geometry}
-          material={materials.Material}
         />
       </group>
 
