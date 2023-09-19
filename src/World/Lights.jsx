@@ -65,7 +65,7 @@ const Lights = () => {
 
     return (
         <>
-            <ambientLight intensity={0.5}/>
+            <ambientLight intensity={0.3}/>
             <spotLight
                 ref={spotLightRedRef}
                 position={[4, 5, -2]}
