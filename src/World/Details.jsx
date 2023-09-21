@@ -17,7 +17,6 @@ const Details = () => {
 
 
         if(newY > 0){
-            console.log("Hola")
             sparklesRef.current.color = rojo;
         }else if(newY < 1){
             sparklesRef.current.Color = azul;

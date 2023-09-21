@@ -2,7 +2,7 @@ import { ContactShadows, useAnimations, useGLTF } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import { useTexture } from "@react-three/drei";
 
-const Boy = () => {
+const Boy = (props) => {
 
     const boyRef = useRef();
     const boyModel = useGLTF("/assets/Models/Boy/Boy.glb");
@@ -27,8 +27,7 @@ const Boy = () => {
                 rotation-y={Math.PI * 2.5}>
                 <primitive object={boyModel.scene}/>
                 {/* <meshStandardMaterial /> */}
-            </mesh>
-            
+            </mesh>          
         </>
     )
 }

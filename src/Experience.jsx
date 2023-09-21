@@ -16,6 +16,8 @@ import Details from "./World/Details";
 import { Perf } from "r3f-perf";
 import Palmera from "./World/Palmera";
 import Telescope from "./World/Telescope";
+import { AxesHelper } from "three";
+import SongText from "./World/SongText";
 
 const Experience = () => {
 
@@ -35,15 +37,12 @@ const Experience = () => {
             <Mixer/>
             <Palmera/>
             <Telescope/>
-            
+            <SongText/>
+            <axesHelper args={[5]} position-y={0} />
         </>
     )
-
-    
-    
-
-    
-
 }
+
+/* The X axis is red. The Y axis is green. The Z axis is blue. */
 
 export default Experience;
