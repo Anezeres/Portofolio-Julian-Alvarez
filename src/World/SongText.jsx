@@ -1,10 +1,17 @@
 import { Center, Float, Html, Text, Text3D, useGLTF } from "@react-three/drei"
-import { useEffect, useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Color, Audio, AudioListener, AudioLoader } from "three";
+
+import {refContext} from "../Context/refContext";
 
 const SongText = () => {
 
     const arrowModel = useGLTF("/assets/Models/Notes/scene.gltf");
+
+    const songTextRef = useRef();
+    const {apagarLuces,encenderLuces} = useContext(refContext)
+    const arrowRef = useRef();
 
     const fragmentoCancion = [
         "Y hace tiempo \nque no venías \na mi cabeza",
@@ -20,34 +27,23 @@ const SongText = () => {
         "Yo ni te extrañaba \nni te quería vel",
         "Pero pusieron la \ncanción que te \ngustaba ponel"
     ];
-
+    
+    const [isVisible, setIsVisible] = useState(false);
     const [texto, setTexto] = useState(fragmentoCancion[0]); // Inicialmente, muestra el primer fragmento
     const tiempoPorFragmento = 33000/12; // 33 segundos divididos en 4 fragmentos
 
 
-    const handleSign = (type) => {
-        alert(type);
-    };
     
+    const toggleVisibility = () => {
+        setIsVisible(prevState => !prevState);
+    };
 
-    useEffect(() => {
-        let fragmentoActual = 0;
-        const intervalo = setInterval(() => {
-            fragmentoActual++;
-            if (fragmentoActual < fragmentoCancion.length) {
-                setTexto(fragmentoCancion[fragmentoActual]);
-            } else {
-                clearInterval(intervalo); // Detiene el intervalo cuando se han mostrado todos los fragmentos
-            }
-        }, tiempoPorFragmento);
+    const handleSign = () => {
+        
+        Song();
+        apagarLuces();
+        arrowRef.current.visible = false;
 
-        return () => {
-            clearInterval(intervalo); // Limpia el intervalo cuando el componente se desmonta
-        };
-    }, []);
-
-  /*   useEffect(() => {
-        // Crear una instancia de AudioListener y agregarlo a la cámara
         const listener = new AudioListener();
         //cameraRef.current.add(listener);
     
@@ -57,39 +53,103 @@ const SongText = () => {
         // Cargar un sonido y configurarlo como el buffer del objeto de audio
         const audioLoader = new AudioLoader();
         audioLoader.load('/assets/Sounds/BadBunny.mp3', (buffer) => {
-        sound.setBuffer(buffer);
-        //sound.setLoop(true);
-        sound.setVolume(0.5); 
-        sound.play();
+            sound.setBuffer(buffer);
+            toggleVisibility();
+            //sound.setLoop(true);
+            sound.setVolume(0.5); 
+            sound.play();
+
         });
-    }, []); */
+
+        sound.onEnded = () => {
+            setTimeout(() => {
+                console.log("Hola")
+                toggleVisibility();
+                encenderLuces()
+                arrowRef.current.visible = true;
+            }, 0);
+        }
+
+        
+    };
+
+    const Song = (type) => {
+
+        let fragmentoActual = 0;
+        const intervalo = setInterval(() => {
+            fragmentoActual++;
+            if (fragmentoActual < fragmentoCancion.length) {
+                setTexto(fragmentoCancion[fragmentoActual]);
+            } else {
+                clearInterval(intervalo); // Detiene el intervalo cuando se han mostrado todos los fragmentos
+            }
+        }, tiempoPorFragmento);
+        
+        return () => {
+            clearInterval(intervalo); // Limpia el intervalo cuando el componente se desmonta
+        };  
+    };
+
+    useFrame((state, delta) => {
+        const amplitude = 10; 
+        const frequency = 2; 
+
+
+        const newY = +10+amplitude * Math.sin(state.clock.elapsedTime * frequency);
+
+        arrowRef.current.position.y = newY;
+
+        
+    })
+    
+
 
     return (    
         <>
-            <Center
-                /* position-y={0}
-                position-x={-0.8} */
-            >   
+            <group >
 
-            <Html  position={[-0.5, 2.4, -0.1]}  center distanceFactor={12}>
-                <h2 className="song-text">{texto}</h2>
-            </Html>
-            <Float speed={2}>
-                <Text 
-                    font="/assets/fonts/Lobster.json"
-                    fontSize={0.2}
-                    color={new Color(0xFFFF)}
-                    position-y={2}
-                    maxWidth={200}
-                    textAlign="center"
+                <Center >   
+                    <Html  
+                        position={[-0.5, 2.4, -0.1]}  
+                        center 
+                        distanceFactor={12} r
+                        ref={songTextRef}
+                        visible={false}
+                        
+                        
+                        
+                        >
+                        <h2 className="song-text" style={{ display: isVisible ? 'block' : 'none' }}>{texto}</h2>
+                    </Html>
+                    <Float speed={2} >
+                        <Text 
+                            font="/assets/fonts/Lobster.json"
+                            fontSize={0.2}
+                            color={new Color(0xFFFF)}
+                            position-y={2}
+                            maxWidth={200}
+                            textAlign="center"
+                            
+                            
+                            
+                            
+                        >
+                            
+                        </Text>
+                    </Float>
+                </Center>
+
+            </group>
+            
+            <group position={[-1.1,0,0]} scale={0.01}  >
+                <mesh 
+                    position={[0,0,0]} 
+                    scale={1} 
+                    rotation-y={-Math.PI * 1} 
+                    onClick={() => handleSign()}
+                    ref={arrowRef}
+                    >
                     
-                >
-                    
-                </Text>
-            </Float>
-            </Center>
-            <group dispose={null} position={[0,1,0]} scale={20}>
-                <mesh position={[0.3,-1.56,0.7]} scale={1} rotation-y={-Math.PI * 1}>
                     <primitive object={arrowModel.scene}/>
                 </mesh>
             </group>
@@ -100,5 +160,3 @@ const SongText = () => {
 
 export default SongText;
 useGLTF.preload("/assets/Models/Notes/scene.gltf");
-
-        

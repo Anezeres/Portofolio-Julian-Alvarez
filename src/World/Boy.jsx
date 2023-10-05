@@ -1,12 +1,16 @@
 import { ContactShadows, useAnimations, useGLTF } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useTexture } from "@react-three/drei";
+import {refContext} from "../Context/refContext";
+
+
 
 const Boy = (props) => {
+    const {boyRefC} = useContext(refContext)
 
-    const boyRef = useRef();
+    const boyRef = boyRefC;
     const boyModel = useGLTF("/assets/Models/Boy/Boy.glb");
-    const { animations} = boyModel;
+    const { animations } = boyModel;
 
     const {actions} = useAnimations(animations,boyRef);
 
