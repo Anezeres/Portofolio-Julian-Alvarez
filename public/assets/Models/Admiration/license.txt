@@ -1,0 +1,11 @@
+Model Information:
+* title:	Exclamation Of Mission
+* source:	https://sketchfab.com/3d-models/exclamation-of-mission-fcd0149ec6b64a51b4ebdd464386b1e7
+* author:	Huargenn (https://sketchfab.com/Huargenn)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Exclamation Of Mission" (https://sketchfab.com/3d-models/exclamation-of-mission-fcd0149ec6b64a51b4ebdd464386b1e7) by Huargenn (https://sketchfab.com/Huargenn) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

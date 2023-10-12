@@ -1,12 +1,14 @@
 import { useGLTF } from "@react-three/drei";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import {refContext} from "../Context/refContext";
 
 const Guitar = () => {
 
     const guitarModel = useGLTF("/assets/Models/Guitar/scene.gltf");
 
-    const guitarRef = useRef();
+    const {guitarRefC} = useContext(refContext)
+    const guitarRef = guitarRefC;
 
     useFrame((state, delta) => {
         const amplitude = 0.2; 

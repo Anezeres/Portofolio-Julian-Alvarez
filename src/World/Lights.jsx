@@ -1,18 +1,31 @@
 import { useHelper } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useMemo, useRef } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { Color } from 'three';
 import { DirectionalLightHelper, PointLightHelper, SpotLightHelper } from "three";
+import {refContext} from "../Context/refContext";
 
 const Lights = () => {
 
+    const {
+        ambientLightRefC,
+        spotLightRedRefC,
+        spotLightBlueRefC,
+        spotLightGreenRefC,
+        pointLightRefC
+    } = useContext(refContext)
 
-    const spotLightRedRef = useRef();
-    const spotLightBlueRef = useRef();
-    const spotLightRedRef1 = useRef();
-    const pointLightRef = useRef();
 
-    //useHelper(pointLightRef, PointLightHelper)
+    const spotLightRedRef = spotLightRedRefC;
+    const spotLightBlueRef = spotLightBlueRefC;
+    const spotLightGreenRef = spotLightGreenRefC;
+    const pointLightRef = pointLightRefC;
+
+    const ambientLightRef = ambientLightRefC;
+
+
+    const directionalLightRef = useRef();
+    useHelper(directionalLightRef, DirectionalLightHelper)
 
 
     useFrame((state, delta) => {
@@ -28,11 +41,11 @@ const Lights = () => {
         spotLightBlueRef.current.position.x = newY;
         spotLightBlueRef.current.position.z = -newY;
 
-        spotLightRedRef1.current.position.z = -1+newY;
-        spotLightRedRef1.current.position.x = -0.5+newY;
+        spotLightGreenRef.current.position.z = -1+newY;
+        spotLightGreenRef.current.position.x = -0.5+newY;
 
         /* 
-        spotLightRedRef1.current.position.x = newY;
+        spotLightGreenRef.current.position.x = newY;
         spotLightBlueRef1.current.position.x = -newY; */
     })
 
@@ -65,7 +78,7 @@ const Lights = () => {
 
     return (
         <>
-            <ambientLight intensity={0.5}/>
+            <ambientLight ref={ambientLightRef} intensity={1}/>
             <spotLight
                 ref={spotLightRedRef}
                 position={[4, 5, -2]}
@@ -74,6 +87,7 @@ const Lights = () => {
                 color={"red"}
                 penumbra={1}
                 distance={15}
+                visible={false}
             />  
             <spotLight
                 ref={spotLightBlueRef}
@@ -83,23 +97,36 @@ const Lights = () => {
                 color={"blue"}
                 penumbra={1}
                 distance={15}
+                visible={false}
             /> 
 
             <spotLight
-                ref={spotLightRedRef1}
+                ref={spotLightGreenRef}
                 position={[3, 5, 3]}
                 angle={Math.PI / 15}
                 intensity={400}
                 color={"green"}
                 penumbra={1}
                 distance={15}
+                visible={false}
             />  
+
+            <directionalLight
+                ref={directionalLightRef}
+                position={[0, 5, 0]}
+                angle={Math.PI / 15}
+                intensity={2}
+                color={"white"}
+                penumbra={1}
+                distance={15}
+            /> 
             <pointLight 
                 ref={pointLightRef} 
                 position={[2.2, 0.5, -1.8]} 
                 intensity={1} 
                 color={"red"} 
                 scale={0.1}
+                visible={false}
             />
         </>
     )
