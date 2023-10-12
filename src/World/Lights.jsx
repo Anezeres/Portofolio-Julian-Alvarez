@@ -22,7 +22,10 @@ const Lights = () => {
     const pointLightRef = pointLightRefC;
 
     const ambientLightRef = ambientLightRefC;
-    //useHelper(pointLightRef, PointLightHelper)
+
+
+    const directionalLightRef = useRef();
+    useHelper(directionalLightRef, DirectionalLightHelper)
 
 
     useFrame((state, delta) => {
@@ -107,6 +110,16 @@ const Lights = () => {
                 distance={15}
                 visible={false}
             />  
+
+            <directionalLight
+                ref={directionalLightRef}
+                position={[0, 5, 0]}
+                angle={Math.PI / 15}
+                intensity={2}
+                color={"white"}
+                penumbra={1}
+                distance={15}
+            /> 
             <pointLight 
                 ref={pointLightRef} 
                 position={[2.2, 0.5, -1.8]} 

@@ -1,48 +1,38 @@
 import { Center, Float, Html, Text, Text3D, useGLTF } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber";
 import { useContext, useEffect, useRef, useState } from "react";
-import { Color, Audio, AudioListener, AudioLoader } from "three";
+import { Color, Audio, AudioListener, AudioLoader, MeshBasicMaterial, MathUtils } from "three";
 
 import {refContext} from "../Context/refContext";
 
 const SongText = () => {
 
-    const arrowModel = useGLTF("/assets/Models/Notes/scene.gltf");
+    const arrowModel = useGLTF("/assets/Models/Admiration/scene.gltf");
 
     const songTextRef = useRef();
-    const {apagarLuces,encenderLuces} = useContext(refContext)
-    const arrowRef = useRef();
+    const {
+        apagarLuces,
+        encenderLuces, 
+        activeCamera, 
+        setActiveCamera, 
+        moverCamara,
+        texto, 
+        setTexto,
+        isVisible, 
+        setIsVisible,
+        admirationRefC,
+        clickRefC} = useContext(refContext)
 
-    const fragmentoCancion = [
-        "Y hace tiempo \nque no venías \na mi cabeza",
-        "Pero ya van \npar de cervezas",
-        "Y me acoldé de \ncómo tú me besas",
-        "De to' los polvos \nencima 'e la mesa",
-        "Y en el carro, \nla playa, y el motel",
-        "En casa de tu pai, \ncuando yo te iba a vel",
-        "Las veces que tu mai \nnos llegó a cogel",
-        "Tú brincando mojaíta, \nsudando Chanel",
-        "Yo sé que lo nuestro \nes cosa de ayel",
-        "Y me pone contento \nque te va bien con él",
-        "Yo ni te extrañaba \nni te quería vel",
-        "Pero pusieron la \ncanción que te \ngustaba ponel"
-    ];
-    
-    const [isVisible, setIsVisible] = useState(false);
-    const [texto, setTexto] = useState(fragmentoCancion[0]); // Inicialmente, muestra el primer fragmento
-    const tiempoPorFragmento = 33000/12; // 33 segundos divididos en 4 fragmentos
+    const admirationGuitarRef = admirationRefC;
 
 
-    
-    const toggleVisibility = () => {
-        setIsVisible(prevState => !prevState);
-    };
 
-    const handleSign = () => {
-        
-        Song();
+
+    const sonidoGuitarra = () => {
+
         apagarLuces();
-        arrowRef.current.visible = false;
+        admirationGuitarRef.current.visible = false;
+        clickRefC.current.visible = false;
 
         const listener = new AudioListener();
         //cameraRef.current.add(listener);
@@ -52,9 +42,9 @@ const SongText = () => {
     
         // Cargar un sonido y configurarlo como el buffer del objeto de audio
         const audioLoader = new AudioLoader();
-        audioLoader.load('/assets/Sounds/BadBunny.mp3', (buffer) => {
+        audioLoader.load('/assets/Sounds/Malaguena.mp3', (buffer) => {
             sound.setBuffer(buffer);
-            toggleVisibility();
+            /* toggleVisibility(); */
             //sound.setLoop(true);
             sound.setVolume(0.5); 
             sound.play();
@@ -63,32 +53,17 @@ const SongText = () => {
 
         sound.onEnded = () => {
             setTimeout(() => {
-                console.log("Hola")
-                toggleVisibility();
+               /*  toggleVisibility(); */
                 encenderLuces()
-                arrowRef.current.visible = true;
+                admirationGuitarRef.current.visible = true;
+                clickRefC.current.visible = true;
+                setActiveCamera(false)
             }, 0);
         }
 
-        
-    };
+    }
 
-    const Song = (type) => {
-
-        let fragmentoActual = 0;
-        const intervalo = setInterval(() => {
-            fragmentoActual++;
-            if (fragmentoActual < fragmentoCancion.length) {
-                setTexto(fragmentoCancion[fragmentoActual]);
-            } else {
-                clearInterval(intervalo); // Detiene el intervalo cuando se han mostrado todos los fragmentos
-            }
-        }, tiempoPorFragmento);
-        
-        return () => {
-            clearInterval(intervalo); // Limpia el intervalo cuando el componente se desmonta
-        };  
-    };
+    
 
     useFrame((state, delta) => {
         const amplitude = 10; 
@@ -97,10 +72,27 @@ const SongText = () => {
 
         const newY = +10+amplitude * Math.sin(state.clock.elapsedTime * frequency);
 
-        arrowRef.current.position.y = newY;
+        admirationGuitarRef.current.position.y = newY;
 
         
     })
+
+    useFrame((state, delta) => {
+        
+        if(activeCamera){
+            state.camera.position.x = MathUtils.lerp(state.camera.position.x, activeCamera ? -2 : 4, 0.001)
+            state.camera.position.z = MathUtils.lerp(state.camera.position.z, activeCamera ? 3 : -4, 0.001)
+            state.camera.position.y = MathUtils.lerp(state.camera.position.y, activeCamera ? 0 : 3, 0.001)
+        }
+        else if(!activeCamera){
+            state.camera.position.x = MathUtils.lerp(state.camera.position.x, activeCamera ? -2 : 4, 0.02)
+            state.camera.position.y = MathUtils.lerp(state.camera.position.z, activeCamera ? 3 : -4, 0.02)
+            state.camera.position.z = MathUtils.lerp(state.camera.position.y, activeCamera ? 0 : 3, 0.02)
+
+        }
+        
+    })
+
     
 
 
@@ -140,19 +132,25 @@ const SongText = () => {
                 </Center>
 
             </group>
+                <group position={[-1.3,0.1,-1.9]} scale={0.01}  >
+                    <mesh 
+                        position={[0,0,0]} 
+                        scale={1} 
+                        rotation-y={-Math.PI * 1} 
+                        onClick={() => {
+                            sonidoGuitarra()
+                            moverCamara()
+                            
+                        }}
+                        ref={admirationGuitarRef}
+                        >
+                        
+                        <primitive object={arrowModel.scene}/>
+                    </mesh>
+                </group>
+
             
-            <group position={[-1.1,0,0]} scale={0.01}  >
-                <mesh 
-                    position={[0,0,0]} 
-                    scale={1} 
-                    rotation-y={-Math.PI * 1} 
-                    onClick={() => handleSign()}
-                    ref={arrowRef}
-                    >
-                    
-                    <primitive object={arrowModel.scene}/>
-                </mesh>
-            </group>
+            
         </>
 
     )
@@ -160,3 +158,5 @@ const SongText = () => {
 
 export default SongText;
 useGLTF.preload("/assets/Models/Notes/scene.gltf");
+
+/* [-1.1,0,0]  [-1.3,0.1,-1.9]*/

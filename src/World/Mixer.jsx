@@ -1,23 +1,31 @@
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+
+import {refContext} from "../Context/refContext";
 
 const Mixer = () => {
 
     const mixerModel = useGLTF("/assets/Models/Mixer/Mixer.glb");
     const mixerRef = useRef();
+
+    const {mixerActivo} = useContext(refContext)
     
     console.log(mixerRef)
 
     useFrame((state, delta) => {
-        const amplitude = 0.01; 
-        const frequency = 8; 
+
+        if(mixerActivo){
+            const amplitude = 0.01; 
+            const frequency = 8; 
 
 
-        const newY = 1+amplitude * Math.cos(state.clock.elapsedTime * frequency);
-        const escalado = newY - 0.5;
+            const newY = 1+amplitude * Math.cos(state.clock.elapsedTime * frequency);
+            const escalado = newY - 0.5;
 
-        mixerRef.current.scale.set(escalado, escalado, escalado)
+            mixerRef.current.scale.set(escalado, escalado, escalado)
+        }
+        
 
         
     })

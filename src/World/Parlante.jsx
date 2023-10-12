@@ -1,23 +1,44 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+
+import {refContext} from "../Context/refContext";
 
 const Parlante = () => {
 
     const parlanteModel = useGLTF("/assets/Models/Parlante/scene.gltf");
     const parlanteRef = useRef();
+
+    const {parlanteActivo} = useContext(refContext)
     
-    console.log(parlanteRef)
-
+    console.log(parlanteActivo)
+    
     useFrame((state, delta) => {
-        const amplitude = 0.01; 
-        const frequency = 8; 
+
+        if(parlanteActivo){
+
+            const amplitude = 0.01;
+            const frequency = 8; 
 
 
-        const newY = 1+amplitude * Math.cos(state.clock.elapsedTime * frequency);
-        const escalado = newY - 0.82;
+            const newY = 1+amplitude * Math.cos(state.clock.elapsedTime * frequency);
+            const escalado = newY - 0.82;
 
-        parlanteRef.current.scale.set(escalado, escalado, escalado)
+            parlanteRef.current.scale.set(escalado, escalado, escalado)
+
+        } else{
+            const amplitude = 0.0;
+            const frequency = 8; 
+
+
+            const newY = 1+amplitude * Math.cos(state.clock.elapsedTime * frequency);
+            const escalado = newY - 0.82;
+
+            parlanteRef.current.scale.set(escalado, escalado, escalado)
+        }
+        
+        
+        
 
         
     })

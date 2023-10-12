@@ -4,14 +4,41 @@ import {refContext} from "./refContext";
 
 const RefContext = ({children}) => {
 
+    const fragmentoCancion = [
+        "Y hace tiempo \nque no venías \na mi cabeza",
+        "Pero ya van \npar de cervezas",
+        "Y me acoldé de \ncómo tú me besas",
+        "De to' los polvos \nencima 'e la mesa",
+        "Y en el carro, \nla playa, y el motel",
+        "En casa de tu pai, \ncuando yo te iba a vel",
+        "Las veces que tu mai \nnos llegó a cogel",
+        "Tú brincando mojaíta, \nsudando Chanel",
+        "Yo sé que lo nuestro \nes cosa de ayel",
+        "Y me pone contento \nque te va bien con él",
+        "Yo ni te extrañaba \nni te quería vel",
+        "Pero pusieron la \ncanción que te \ngustaba ponel"
+    ];
+
     const boyRefC = useRef()
     const guitarRefC = useRef();
     const ambientLightRefC = useRef();
+    const admirationRef1 = useRef();
+    const clickRefC = useRef();
+    const admirationRefC = useRef();
 
     const spotLightRedRefC = useRef();
     const spotLightBlueRefC = useRef();
     const spotLightGreenRefC = useRef();
     const pointLightRefC = useRef();
+
+
+    const [parlanteActivo, setParlante] = useState(false);
+    const [mixerActivo, setMixer] = useState(false);
+    const [activeCamera, setActiveCamera] = useState(false)
+    const [texto, setTexto] = useState(fragmentoCancion[0]);
+    const [isVisible, setIsVisible] = useState(false);
+
+    
 
     const apagarLuces = () => {
         if (ambientLightRefC.current) {
@@ -29,6 +56,9 @@ const RefContext = ({children}) => {
         if (pointLightRefC.current) {
             pointLightRefC.current.visible = true;
         }
+
+        setParlante(true);
+        setMixer(true);
     };
 
     const encenderLuces = () => {
@@ -47,7 +77,16 @@ const RefContext = ({children}) => {
         if (pointLightRefC.current) {
             pointLightRefC.current.visible = false;
         }
+
+        setParlante(false);
+        setMixer(false);
+
     };
+
+    const moverCamara = () => {
+        
+        setActiveCamera(!activeCamera);
+    } 
 
 
 
@@ -63,7 +102,20 @@ const RefContext = ({children}) => {
                     spotLightBlueRefC,
                     spotLightGreenRefC,
                     pointLightRefC,
-                    encenderLuces
+                    encenderLuces,
+                    parlanteActivo,
+                    mixerActivo,
+                    admirationRef1,
+                    clickRefC,
+                    activeCamera,
+                    setActiveCamera,
+                    moverCamara,
+                    texto, 
+                    setTexto,
+                    fragmentoCancion,
+                    isVisible, 
+                    setIsVisible,
+                    admirationRefC
                     }
                 }
             >

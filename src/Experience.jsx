@@ -6,6 +6,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader';
 
 
 import Cuarto from "./World/Cuarto";
+import Globo from "./World/Globo";
 import Guitar from "./World/Guitar";
 import Enviroment from "./World/Enviroment";
 import Boy from "./World/Boy";
@@ -19,6 +20,7 @@ import Telescope from "./World/Telescope";
 import { AxesHelper } from "three";
 import SongText from "./World/SongText";
 import RefContext from "./Context/RefContext";
+import Click from "./World/Click";
 
 
 const Experience = () => {
@@ -41,6 +43,8 @@ const Experience = () => {
                 <Palmera/>
                 <Telescope/>
                 <SongText/>
+                <Globo/>
+                <Click /> 
                 <axesHelper args={[5]} position-y={0} />
             </RefContext>
         </>
