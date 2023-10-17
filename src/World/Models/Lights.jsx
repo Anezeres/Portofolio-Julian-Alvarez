@@ -12,7 +12,8 @@ const Lights = () => {
         spotLightRedRefC,
         spotLightBlueRefC,
         spotLightGreenRefC,
-        pointLightRefC
+        pointLightRefC,
+        directionalLightRefC
     } = useContext(refContext)
 
 
@@ -24,7 +25,7 @@ const Lights = () => {
     const ambientLightRef = ambientLightRefC;
 
 
-    const directionalLightRef = useRef();
+    const directionalLightRef = directionalLightRefC;
    /*  useHelper(directionalLightRef, DirectionalLightHelper) */
 
 
@@ -83,7 +84,7 @@ const Lights = () => {
                 ref={spotLightRedRef}
                 position={[4, 5, -2]}
                 angle={Math.PI / 15}
-                intensity={400}
+                intensity={800}
                 color={"red"}
                 penumbra={1}
                 distance={15}
@@ -93,7 +94,7 @@ const Lights = () => {
                 ref={spotLightBlueRef}
                 position={[-3, 5, 2]}
                 angle={Math.PI / 15}
-                intensity={400}
+                intensity={800}
                 color={"blue"}
                 penumbra={1}
                 distance={15}
@@ -104,7 +105,7 @@ const Lights = () => {
                 ref={spotLightGreenRef}
                 position={[3, 5, 3]}
                 angle={Math.PI / 15}
-                intensity={400}
+                intensity={800}
                 color={"green"}
                 penumbra={1}
                 distance={15}
@@ -115,7 +116,7 @@ const Lights = () => {
                 ref={directionalLightRef}
                 position={[0, 5, 0]}
                 angle={Math.PI / 15}
-                intensity={2}
+                intensity={1}
                 color={"white"}
                 penumbra={1}
                 distance={15}
