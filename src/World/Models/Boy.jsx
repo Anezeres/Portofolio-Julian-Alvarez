@@ -1,7 +1,7 @@
 import { ContactShadows, useAnimations, useGLTF } from "@react-three/drei";
 import { useContext, useEffect, useRef } from "react";
 import { useTexture } from "@react-three/drei";
-import {refContext} from "../Context/refContext";
+import {refContext} from "../../Context/refContext";
 
 
 

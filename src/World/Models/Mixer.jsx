@@ -2,7 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useContext } from "react";
 
-import {refContext} from "../Context/refContext";
+import {refContext} from "../../Context/refContext";
 
 const Mixer = () => {
 

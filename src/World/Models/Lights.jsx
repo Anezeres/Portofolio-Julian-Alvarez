@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useContext, useEffect, useMemo, useRef } from "react";
 import { Color } from 'three';
 import { DirectionalLightHelper, PointLightHelper, SpotLightHelper } from "three";
-import {refContext} from "../Context/refContext";
+import {refContext} from "../../Context/refContext";
 
 const Lights = () => {
 
@@ -25,7 +25,7 @@ const Lights = () => {
 
 
     const directionalLightRef = useRef();
-    useHelper(directionalLightRef, DirectionalLightHelper)
+   /*  useHelper(directionalLightRef, DirectionalLightHelper) */
 
 
     useFrame((state, delta) => {
