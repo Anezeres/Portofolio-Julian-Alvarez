@@ -1,4 +1,5 @@
 import { useGLTF, useHelper } from "@react-three/drei";
+import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
 import { BoxHelper } from "three";
 
@@ -7,56 +8,64 @@ const Cuarto = (props) => {
   const { nodes, materials } = useGLTF("/assets/Models/Cuarto/Cuarto2.glb");
 
   const bedRef = useRef();
+  const objectRef = useRef();
   const computerRef = useRef();
 
-  //useHelper(bedRef, BoxHelper);
+  useHelper(objectRef, BoxHelper);
   //useHelper(computerRef, BoxHelper);
 
   return (
+
     <group {...props} dispose={null}>
 
       {/* Este es el suelo */}
 
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Floor.geometry}
-        material={materials.White}
-        scale={[4, 0.2, 4]}
-      />
+      <RigidBody type="fixed" colliders={"hull"}>
 
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Floor.geometry}
+          material={materials.White}
+          scale={[4, 0.2, 4]}
+        />
+
+      </RigidBody>
 
       {/* Esta es la cama */}
 
+
       <group ref={bedRef} position={[0, 0, 0]}>
 
-        <mesh 
+        <mesh
           castShadow
           receiveShadow
           geometry={nodes.Bed_frame.geometry}
           material={materials.Frame}
           position={[-2.66, 0.203, 2.206]}
         />
-        <group position={[-2.66, 0.875, 2.206]} >
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cube011.geometry}
-            material={materials.White}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cube011_1.geometry}
-            material={materials.Pillow}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cube011_2.geometry}
-            material={materials.Blanket}
-          />
-        </group>
+        <RigidBody type="fixed" colliders={"cuboid"}>
+          <group position={[-2.66, 0.875, 2.206]} >
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes.Cube011.geometry}
+              material={materials.White}
+            />
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes.Cube011_1.geometry}
+              material={materials.Pillow}
+            />
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes.Cube011_2.geometry}
+              material={materials.Blanket}
+            />
+          </group>
+        </RigidBody>
         <group position={[-2.66, 1.337, 3.599]} >
           <mesh
             castShadow
@@ -73,6 +82,7 @@ const Cuarto = (props) => {
         </group>
 
       </group>
+
 
 
 
@@ -294,6 +304,7 @@ const Cuarto = (props) => {
             geometry={nodes.Cube017.geometry}
             material={materials.Frame}
           />
+
           <mesh
             castShadow
             receiveShadow
@@ -387,7 +398,7 @@ const Cuarto = (props) => {
         geometry={nodes.Coffe_table.geometry}
         material={materials.Frame}
         position={[1.197, 0.554, -0.881]}
-      /> 
+      />
       <mesh
         castShadow
         receiveShadow
@@ -422,20 +433,20 @@ const Cuarto = (props) => {
       </group>
 
       <group position={[1.687, 0.667, -0.803]} >
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cylinder005.geometry}
-            material={materials.White}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Cylinder005_1.geometry}
-            material={materials.Coffe}
-          />
-        </group>
-      
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder005.geometry}
+          material={materials.White}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder005_1.geometry}
+          material={materials.Coffe}
+        />
+      </group>
+
 
 
 
@@ -446,6 +457,8 @@ const Cuarto = (props) => {
 
 
       {/* Paredes*/}
+
+      {/* ref={objectRef} */}
 
       <group position={[-3.659, 1.445, -2.442]}>
         <mesh
@@ -473,12 +486,22 @@ const Cuarto = (props) => {
           material={materials.Frame}
         />
       </group>
+
+
+
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.Wall.geometry}
         material={materials.White}
       />
+      <RigidBody type="fixed">
+        <CuboidCollider args={[0.2, 3, 4.5]} position={[-4.2, 2.5, 0]}/>
+        <CuboidCollider args={[0.2, 3, 4.5]} position={[4.2, 2.5, 0]}/>
+        <CuboidCollider args={[4.5, 3, 0.2]} position={[0, 2.5, 4.2]} />
+        <CuboidCollider args={[4.5, 3, 0.2]} position={[0, 2.5, -4.2]} />
+        <CuboidCollider args={[4.5,0.2, 4]} position={[0, 5.6, 0]} />
+      </RigidBody>
 
       {/* Ventana */}
 
@@ -594,6 +617,7 @@ const Cuarto = (props) => {
         />
       </group>
     </group>
+
   );
 }
 

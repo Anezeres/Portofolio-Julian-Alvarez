@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 import { useContext, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import {refContext} from "../Context/refContext";
+import {refContext} from "../../Context/refContext";
 
 const Guitar = () => {
 

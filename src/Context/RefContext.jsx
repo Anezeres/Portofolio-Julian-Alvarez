@@ -34,9 +34,12 @@ const RefContext = ({children}) => {
 
     const [parlanteActivo, setParlante] = useState(false);
     const [mixerActivo, setMixer] = useState(false);
+    const [globosActivos, setGlobos] = useState(false);
     const [activeCamera, setActiveCamera] = useState(false)
     const [texto, setTexto] = useState(fragmentoCancion[0]);
     const [isVisible, setIsVisible] = useState(false);
+
+    
 
     
 
@@ -59,6 +62,8 @@ const RefContext = ({children}) => {
 
         setParlante(true);
         setMixer(true);
+        setGlobos(true);
+        
     };
 
     const encenderLuces = () => {
@@ -80,6 +85,8 @@ const RefContext = ({children}) => {
 
         setParlante(false);
         setMixer(false);
+        
+        setGlobos(false);
 
     };
 
@@ -115,7 +122,8 @@ const RefContext = ({children}) => {
                     fragmentoCancion,
                     isVisible, 
                     setIsVisible,
-                    admirationRefC
+                    admirationRefC,
+                    globosActivos
                     }
                 }
             >

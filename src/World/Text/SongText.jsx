@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Color, Audio, AudioListener, AudioLoader, MeshBasicMaterial, MathUtils } from "three";
 
-import {refContext} from "../Context/refContext";
+import {refContext} from "../../Context/refContext";
 
 const SongText = () => {
 
@@ -77,6 +77,8 @@ const SongText = () => {
         
     })
 
+    
+
     useFrame((state, delta) => {
         
         if(activeCamera){
@@ -85,9 +87,9 @@ const SongText = () => {
             state.camera.position.y = MathUtils.lerp(state.camera.position.y, activeCamera ? 0 : 3, 0.001)
         }
         else if(!activeCamera){
-            state.camera.position.x = MathUtils.lerp(state.camera.position.x, activeCamera ? -2 : 4, 0.02)
-            state.camera.position.y = MathUtils.lerp(state.camera.position.z, activeCamera ? 3 : -4, 0.02)
-            state.camera.position.z = MathUtils.lerp(state.camera.position.y, activeCamera ? 0 : 3, 0.02)
+            state.camera.position.x = MathUtils.lerp(state.camera.position.x, activeCamera ? -2 : 4, 0.05)
+            state.camera.position.y = MathUtils.lerp(state.camera.position.z, activeCamera ? 3 : -4, 0.05)
+            state.camera.position.z = MathUtils.lerp(state.camera.position.y, activeCamera ? 0 : 3, 0.05)
 
         }
         
