@@ -1,0 +1,424 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3820,
+      "max": [
+        1.000058889389038,
+        1.000058889389038,
+        0.0
+      ],
+      "min": [
+        -1.000058889389038,
+        -1.010493516921997,
+        -0.24756968021392822
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 45840,
+      "componentType": 5126,
+      "count": 3820,
+      "max": [
+        0.9999998211860657,
+        0.9999998211860657,
+        1.0
+      ],
+      "min": [
+        -0.9999998211860657,
+        -0.9999998211860657,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 6912,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 91680,
+      "componentType": 5126,
+      "count": 768,
+      "max": [
+        0.8269734382629395,
+        0.8270232677459717,
+        0.0
+      ],
+      "min": [
+        -0.8302819132804871,
+        -0.8388779759407043,
+        -0.24756968021392822
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 100896,
+      "componentType": 5126,
+      "count": 768,
+      "max": [
+        1.2891850253993198e-08,
+        0.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 27648,
+      "componentType": 5125,
+      "count": 2292,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 110112,
+      "componentType": 5126,
+      "count": 792,
+      "max": [
+        1.5862679481506348,
+        1.3764030933380127,
+        0.0
+      ],
+      "min": [
+        -0.3758765459060669,
+        -0.5758552551269531,
+        -0.5686818957328796
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 119616,
+      "componentType": 5126,
+      "count": 792,
+      "max": [
+        0.9994221925735474,
+        0.9989781379699707,
+        1.0
+      ],
+      "min": [
+        -0.9998504519462585,
+        -0.9998190999031067,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 36816,
+      "componentType": 5125,
+      "count": 1572,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Promaster273 (https://sketchfab.com/Promaster273)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/whatsapp-logo-3d-d97a53635086486898748694817c5fa7",
+      "title": "WhatsApp Logo 3d"
+    },
+    "generator": "Sketchfab-14.38.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 43104,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 129120,
+      "byteOffset": 43104,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 172224,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8040408205773457
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Material.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0010011,
+          0.712352,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8860305255947775
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Material.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8040408205773457
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "BezierCircle_Material.001_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "BezierCircle_Material.002_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "BezierCurve_Material.003_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6
+          },
+          "indices": 8,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "ea03a97165224a51b1883814b2f20e7b.fbx"
+    },
+    {
+      "children": [
+        3,
+        6,
+        8
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "matrix": [
+        183.12754423041417,
+        -16.347702075482683,
+        -92.22963089578714,
+        0.0,
+        -35.582372099153275,
+        175.21077418387765,
+        -101.70707467953154,
+        0.0,
+        86.64552483607723,
+        106.50439841115326,
+        153.16205724376792,
+        0.0,
+        20.82426643371582,
+        22.619230270385742,
+        -12.66295051574707,
+        1.0
+      ],
+      "name": "BezierCircle"
+    },
+    {
+      "mesh": 0,
+      "name": "BezierCircle_Material.001_0"
+    },
+    {
+      "mesh": 1,
+      "name": "BezierCircle_Material.002_0"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        89.02991852814978,
+        -7.94765723169702,
+        -44.83867555492267,
+        0.0,
+        -17.298850708008885,
+        85.18107826578147,
+        -49.44627053338637,
+        0.0,
+        51.08468523409781,
+        62.79313441091751,
+        90.30166492465737,
+        0.0,
+        -15.152204513549805,
+        4.047401428222656,
+        56.41615295410156,
+        1.0
+      ],
+      "name": "BezierCurve"
+    },
+    {
+      "mesh": 2,
+      "name": "BezierCurve_Material.003_0"
+    },
+    {
+      "children": [
+        9
+      ],
+      "matrix": [
+        69.49523533055456,
+        29.305960170642038,
+        -65.66256897828157,
+        0.0,
+        55.95379880317514,
+        35.3137768450376,
+        74.98071777833175,
+        0.0,
+        45.161759258625715,
+        -88.8487415649354,
+        8.143595573960054,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sun"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Object_9"
+    },
+    {
+      "name": "Object_10"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

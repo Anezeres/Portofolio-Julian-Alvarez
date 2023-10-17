@@ -29,6 +29,7 @@ const RefContext = ({children}) => {
     const spotLightRedRefC = useRef();
     const spotLightBlueRefC = useRef();
     const spotLightGreenRefC = useRef();
+    const directionalLightRefC = useRef();
     const pointLightRefC = useRef();
 
 
@@ -60,6 +61,8 @@ const RefContext = ({children}) => {
             pointLightRefC.current.visible = true;
         }
 
+        directionalLightRefC.current.intensity = 0
+
         setParlante(true);
         setMixer(true);
         setGlobos(true);
@@ -82,6 +85,8 @@ const RefContext = ({children}) => {
         if (pointLightRefC.current) {
             pointLightRefC.current.visible = false;
         }
+
+        directionalLightRefC.current.intensity = 1
 
         setParlante(false);
         setMixer(false);
@@ -123,7 +128,8 @@ const RefContext = ({children}) => {
                     isVisible, 
                     setIsVisible,
                     admirationRefC,
-                    globosActivos
+                    globosActivos,
+                    directionalLightRefC
                     }
                 }
             >

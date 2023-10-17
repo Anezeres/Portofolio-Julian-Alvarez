@@ -13,6 +13,8 @@ import SongText from "../Text/SongText";
 import Globo from "../Models/Globo";
 import Click from "../Models/Click";
 import Linkedin from "../Models/Linkedin";
+import Github from "../Models/Github";
+import Whatsapp from "../Models/Whatsapp";
 
 const Room = () => {
 
@@ -33,6 +35,8 @@ const Room = () => {
                 <SongText/>
                 <Globo/>
                 <Linkedin/>
+                <Github/>
+                <Whatsapp/>
                 <Click /> 
                 {/* <axesHelper args={[5]} position-y={0} /> */}
             </RefContext>

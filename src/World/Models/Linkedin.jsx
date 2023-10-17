@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 
-const Mixer = () => {
+const Linkedin = () => {
 
     const linkModel = useGLTF("/assets/Models/Linkedin/scene.gltf");
 
@@ -26,5 +26,5 @@ const Mixer = () => {
     
 }
 
-export default Mixer;
+export default Linkedin;
 useGLTF.preload("/assets/Models/Linkedin/scene.gltf")

@@ -5,10 +5,10 @@ const Controls = () => {
 
     return (
         <>
-            <OrbitControls  /* enableZoom={false}
+            <OrbitControls  enableZoom={false}
                                 enablePan={false}
                                 enableRotate={false}
-                                target={[0, 0, 0]} *//>
+                                target={[0, 0, 0]}/>
         </>
     )
 }
